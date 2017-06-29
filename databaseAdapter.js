@@ -53,7 +53,10 @@ class DatabaseAdapter {
     }
 
     getRepoInfos(repositoryId) {
-        return this.pool.query('SELECT * FROM repos WHERE repositoryId = ?', [repositoryId]);
+        let whereGenerator = new WhereGenerator(this.pool, WhereConnector.AND);
+        whereGenerator.insertClause('repositoryId', repositoryId);
+
+        return this.pool.query('SELECT * FROM repos ' + whereGenerator.toString());
     }
 
     getTemplate(repositoryId, caseIdentifier) {
@@ -63,6 +66,10 @@ class DatabaseAdapter {
         whereGenerator.insertClause('templateString', caseIdentifier);
 
         return this.pool.query('SELECT * FROM templates ' + whereGenerator.toString());
+    }
+
+    addRepo(id, fullName) {
+        return this.pool.query('INSERT INTO repos (repositoryId, repositoryName) VALUES (?,?)', [id, fullName]);
     }
 }
 

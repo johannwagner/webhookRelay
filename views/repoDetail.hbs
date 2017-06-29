@@ -1,0 +1,21 @@
+<table class="table">
+    <thead>
+
+    <tr>
+        <th>#</th>
+        <th>Identifier</th>
+        <th>Message</th>
+    </tr>
+
+    </thead>
+
+    <tbody>
+    {{#each templates}}
+        <td>{{this.id}}</td>
+        <td><a href="{{this.repositoryId}}/{{this.templateString}}">{{this.templateString}}</a></td>
+        <td>{{{this.templateTextHTML}}}</td>
+    {{/each}}
+    </tbody>
+
+
+</table>

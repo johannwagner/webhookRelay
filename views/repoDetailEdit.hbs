@@ -1,0 +1,22 @@
+
+<form action="" method="post">
+    <h2>Edit {{template.templateString}}</h2>
+    <div class="form-group">
+        <label for="templateTextInput">Template</label>
+        <textarea class="form-control" id="templateTextInput" name="templateTextInput" rows="3"></textarea>
+    </div>
+    <button onclick="onClick()" style="margin: 10px;" type="submit" class="btn btn-success">Send</button>
+</form>
+
+<script src="//cdn.jsdelivr.net/ace/1.2.6/min/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    let editor = ace.edit("editor");
+    editor.setTheme("ace/theme/monokai");
+    //editor.getSession().setMode("ace/mode/handle");
+    editor.resize();
+
+
+    let onClick = function() {
+
+    }
+</script>
